@@ -9,11 +9,24 @@ import com.revworkforce.model.PerformanceReview;
 
 import com.revworkforce.db.DBConnection;
 
+import org.apache.log4j.Logger;
+
 public class PerformanceService implements PerformanceDao{
+	
+	private static final Logger logger =
+            Logger.getLogger(PerformanceService.class);
 
 	Connection connection = DBConnection.getConnection();
 	
+	public PerformanceService(Connection connection) {
+        this.connection = connection;
+    }
+
+    public PerformanceService() {}
+	
 	public void submitReview(PerformanceReview performance) {
+		
+		logger.info("Submitting performance review for empId=" + performance.getEmpId());
 		
 		try {
 			 PreparedStatement ps = connection.prepareStatement(
@@ -31,19 +44,25 @@ public class PerformanceService implements PerformanceDao{
             int rows = ps.executeUpdate();
             
             if (rows > 0) {
-                System.out.println("Performance Review Submitted Successfully");
+                //System.out.println("Performance Review Submitted Successfully");
+            	logger.info("Performance review submitted successfully for empId=" + performance.getEmpId());
             } else {
                 System.out.println("Performance Review Submission Failed");
+                logger.warn("Performance review submission failed for empId=" + performance.getEmpId());
             }
 
         } catch (Exception e) {
-        	System.out.println("Error while submitting performance review");
-            e.printStackTrace();
+        	//System.out.println("Error while submitting performance review");
+            //e.printStackTrace();
+        	logger.error("Error while submitting performance review for empId=" + performance.getEmpId(), e);
+
         }
 		
     }
 	
 	public List<PerformanceReview> getAllReviews() {
+		
+		logger.info("Fetching all performance reviews");
 		
 		List<PerformanceReview> list = new ArrayList<PerformanceReview>();
 
@@ -64,9 +83,12 @@ public class PerformanceService implements PerformanceDao{
                 p.setManagerRating(rs.getInt("MANAGER_RATING"));
                 list.add(p);
             }
+            
+            logger.info("Total performance reviews fetched = " + list.size());
 
         } catch (Exception e) {
-            e.printStackTrace();
+            //e.printStackTrace();
+        	logger.error("Error while fetching performance reviews", e);
         }
         return list;
         
@@ -74,6 +96,8 @@ public class PerformanceService implements PerformanceDao{
 	
 	public void updateFeedback(int reviewId, String feedback, int rating) {
 
+		logger.info("Updating feedback for reviewId=" + reviewId);
+		
         try {
             PreparedStatement ps = connection.prepareStatement(
                 "UPDATE PERFORMANCE_REVIEW SET MANAGER_FEEDBACK=?, MANAGER_RATING=? WHERE REVIEW_ID=?");
@@ -82,13 +106,18 @@ public class PerformanceService implements PerformanceDao{
             ps.setInt(2, rating);
             ps.setInt(3, reviewId);
             ps.executeUpdate();
-
+            
+            logger.info("Feedback updated successfully for reviewId=" + reviewId);
+            
         } catch (Exception e) {
-            e.printStackTrace();
+            //e.printStackTrace();
+        	logger.error("Error while updating feedback for reviewId=" + reviewId, e);
         }
     }
 	
 	public void addGoal(Goal goal) {
+		
+		logger.info("Adding goal for empId=" + goal.getEmpId());
 		
 		try {
 			PreparedStatement ps = connection.prepareStatement(
@@ -106,20 +135,24 @@ public class PerformanceService implements PerformanceDao{
             int rows = ps.executeUpdate();
 
             if (rows > 0) {
-                System.out.println("Goal Added Successfully");
+                //System.out.println("Goal Added Successfully");
+                logger.info("Goal added successfully for empId=" + goal.getEmpId());
             } else {
-                System.out.println("Failed to add goal");
+                //System.out.println("Failed to add goal");
+            	logger.warn("Failed to add goal for empId=" + goal.getEmpId());
             }
             
         } catch (Exception e) {
-        	System.out.println("Error while adding goal");
-            e.printStackTrace();
+        	//System.out.println("Error while adding goal");
+            //e.printStackTrace();
+        	 logger.error("Error while adding goal for empId=" + goal.getEmpId(), e);
         }
 
 	}
 	
 	public List<Goal> getGoals(int empId) {
-
+		
+		logger.debug("Fetching goals for empId=" + empId);
         List<Goal> list = new ArrayList<Goal>();
 
         try {
@@ -141,15 +174,19 @@ public class PerformanceService implements PerformanceDao{
                 goal.setSuccessMetrics(rs.getString("SUCCESS_METRICS"));
                 list.add(goal);
             }
+            
+            logger.info("Total goals fetched for empId=" + empId + " = " + list.size());
 
         } catch (Exception e) {
-            e.printStackTrace();
+            //e.printStackTrace();
+        	logger.error("Error while fetching goals for empId=" + empId, e);
         }
         return list;
     }
 
 	public List<Goal> getTeamGoals(int managerId) {
 
+		logger.info("Fetching team goals for managerId=" + managerId);
         List<Goal> list = new ArrayList<Goal>();
 
         try {
@@ -167,14 +204,19 @@ public class PerformanceService implements PerformanceDao{
                 goal.setProgress(rs.getInt("PROGRESS"));
                 list.add(goal);
             }
+            
+            logger.info("Total team goals fetched for managerId=" + managerId + " = " + list.size());
 
         } catch (Exception e) {
-            e.printStackTrace();
+            //e.printStackTrace();
+        	logger.error("Error while fetching team goals for managerId=" + managerId, e);
         }
         return list;
     }
 	
 	public void updateGoalProgress(int goalId, int progress) {
+		
+		 logger.info("Updating goal progress goalId=" + goalId + ", progress=" + progress + "%");
 
         try {
             PreparedStatement ps = connection.prepareStatement(
@@ -186,17 +228,22 @@ public class PerformanceService implements PerformanceDao{
             
             if (rows > 0) {
                 System.out.println("Goal Progress Updated Successfully");
+                logger.info("Goal progress updated successfully goalId=" + goalId);
             } else {
                 System.out.println("Invalid Goal ID");
+                logger.warn("Invalid goalId while updating progress goalId=" + goalId);
             }
 
         } catch (Exception e) {
-        	System.out.println("Error while updating goal progress");
-            e.printStackTrace();
+        	//System.out.println("Error while updating goal progress");
+            //e.printStackTrace();
+        	logger.error("Error while updating goal progress goalId=" + goalId, e);
         }
     }
 
 	public void teamPerformanceReport(int managerId) {
+		
+		logger.info("Generating team performance report for managerId=" + managerId);
 		
 		System.out.println("TEAM PERFORMANCE REPORT");
 
@@ -215,7 +262,8 @@ public class PerformanceService implements PerformanceDao{
 	        while (rs.next()) {
 	            hasData = true;
 
-	            System.out.println(
+	            //System.out.println(
+	            logger.debug(
 	                "EmpId: " + rs.getInt("EMP_ID") +
 	                " | Name: " + rs.getString("NAME") +
 	                " | Goal: " + rs.getString("DESCRIPTION") +
@@ -224,13 +272,15 @@ public class PerformanceService implements PerformanceDao{
 	        }
 
 	        if (!hasData) {
-	            System.out.println("No performance data available for your team");
+	            //System.out.println("No performance data available for your team");
+	        	logger.info("Team performance report generated for managerId=" + managerId);
 	        }
 
-	        System.out.println("Team Performance Report Generated");
-
+	        //System.out.println("Team Performance Report Generated");
+	        logger.info("Team performance report generated for managerId=" + managerId);
 	    } catch (Exception e) {
-	        e.printStackTrace();
+	        //e.printStackTrace();
+	    	logger.error("Error while generating team performance report for managerId=" + managerId, e);
 	    }
 		
 	}

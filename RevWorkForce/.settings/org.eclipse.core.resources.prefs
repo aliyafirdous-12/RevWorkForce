@@ -1,4 +1,4 @@
-#Fri Jan 30 16:56:42 IST 2026
+#Sat Jan 31 01:10:31 IST 2026
 eclipse.preferences.version=1
 encoding//src/com/revworkforce/main/AdminMenu.java=UTF-8
 encoding//src/com/revworkforce/main/EmployeeMenu.java=UTF-8
@@ -7,3 +7,5 @@ encoding//src/com/revworkforce/main/ManagerMenu.java=UTF-8
 encoding//src/com/revworkforce/service/EmployeeService.java=UTF-8
 encoding//src/com/revworkforce/service/LeaveRequestService.java=UTF-8
 encoding//src/com/revworkforce/service/PerformanceService.java=UTF-8
+encoding//test/com/revworkforce/test/LeaveBalanceServiceTest.java=UTF-8
+encoding//test/com/revworkforce/test/NotificationServiceTest.java=UTF-8

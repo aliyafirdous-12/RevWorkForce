@@ -8,7 +8,12 @@ import com.revworkforce.model.Employee;
 
 import com.revworkforce.db.DBConnection;
 
+import org.apache.log4j.Logger;
+
 public class EmployeeService implements EmployeeDao {
+	
+	private static final Logger logger =
+            Logger.getLogger(EmployeeService.class);
 	
 	Connection connection = DBConnection.getConnection();
 
@@ -20,6 +25,8 @@ public class EmployeeService implements EmployeeDao {
 
 	//1. Add an Employee
     public boolean addEmployee(Employee e) {
+    	
+    	logger.info("Add Employee started for email=" + e.getEmail());
 
         try {
         	PreparedStatement ps = connection.prepareStatement(
@@ -47,14 +54,12 @@ public class EmployeeService implements EmployeeDao {
 
             ps.executeUpdate();
             
-//            ResultSet rs = ps.getGeneratedKeys();
-//            if (rs.next()) {
-//                e.setEmpId(rs.getInt(1));
-//            }
+            logger.info("Employee added successfully: " + e.getEmail());
             return true;
 
         } catch (Exception ex) {
-            ex.printStackTrace();
+        	//ex.printStackTrace();
+        	logger.error("Error while adding employee: " + e.getEmail(), ex);
         }
         return false;
     }
@@ -62,6 +67,8 @@ public class EmployeeService implements EmployeeDao {
     //2. Update Employee
     public void updateEmployee(Employee e) {
 
+    	logger.info("Updating employee empId=" + e.getEmpId());
+    	
         try {
         	PreparedStatement ps = connection.prepareStatement(
         			"UPDATE EMPLOYEE SET NAME=?, PHONE=?, ADDRESS=?, EMERGENCY_CONTACT=?, SALARY=?, DESIGNATION=?, DEPT_ID=? WHERE EMP_ID=?");
@@ -77,9 +84,11 @@ public class EmployeeService implements EmployeeDao {
             ps.setInt(8, e.getEmpId());
 
             ps.executeUpdate();
+            logger.info("Employee updated successfully empId=" + e.getEmpId());
 
         } catch (Exception ex) {
-            ex.printStackTrace();
+            //ex.printStackTrace();
+        	logger.error("Error while updating employee empId=" + e.getEmpId(), ex);
         }
       
     }
@@ -87,6 +96,8 @@ public class EmployeeService implements EmployeeDao {
     //3. Get Employee by id
     public Employee getEmployeeById(int empId) {
 
+    	logger.debug("Fetching employee by id=" + empId);
+    	
         try {
             PreparedStatement ps = connection.prepareStatement(
                 "SELECT * FROM EMPLOYEE WHERE EMP_ID=?");
@@ -99,7 +110,8 @@ public class EmployeeService implements EmployeeDao {
             }
 
         } catch (Exception ex) {
-            ex.printStackTrace();
+            //ex.printStackTrace();
+        	logger.error("Error while fetching employee empId=" + empId, ex);
         }
         return null;
     }
@@ -107,6 +119,8 @@ public class EmployeeService implements EmployeeDao {
     //4. View all Employees
     public List<Employee> getAllEmployees() {
 
+    	logger.info("Fetching all employees");
+    	
         List<Employee> list = new ArrayList<Employee>();
 
         try {
@@ -121,13 +135,16 @@ public class EmployeeService implements EmployeeDao {
             }
 
         } catch (Exception ex) {
-            ex.printStackTrace();
+            //ex.printStackTrace();
+        	logger.error("Error while fetching employees", ex);
         }
         return list;
     }
 
     //5. Update Employee Status
 	public void updateStatus(int empId, String status) {
+		
+		logger.info("Updating status for empId=" + empId + ", status=" + status);
 		
 		try {
 			
@@ -138,13 +155,16 @@ public class EmployeeService implements EmployeeDao {
             ps.executeUpdate();
             
         } catch (Exception ex) {
-            ex.printStackTrace();
+            //ex.printStackTrace();
+        	logger.error("Error updating status for empId=" + empId, ex);
         }
 		
 	}
 
 	//6. Search Employee
 	public List<Employee> searchEmployee(String key) {
+		
+		logger.debug("Searching employee with key=" + key);
 		
         List<Employee> list = new ArrayList<Employee>();
         try {
@@ -158,13 +178,16 @@ public class EmployeeService implements EmployeeDao {
             	list.add(map(rs));
             }
         } catch (Exception ex) {
-            ex.printStackTrace();
+            //ex.printStackTrace();
+        	logger.error("Error searching employee with key=" + key, ex);
         }
         return list;
     }
 
 	//7. Reset / Forgot Password
 	public void resetPassword(int empId, String pwd) {
+		
+		logger.warn("Resetting password for empId=" + empId);
 
 		try {
 			
@@ -175,13 +198,16 @@ public class EmployeeService implements EmployeeDao {
             ps.executeUpdate();
             
         } catch (Exception ex) {
-            ex.printStackTrace();
+            //ex.printStackTrace();
+        	logger.error("Error resetting password for empId=" + empId, ex);
         }
 		
 	}
 
 	//8. Update / change Manager
     public void updateManager(int empId, int managerId) {
+    	
+    	logger.info("Updating manager for empId=" + empId);
     	
         try {
         	
@@ -193,13 +219,16 @@ public class EmployeeService implements EmployeeDao {
             ps.executeUpdate();
             
         } catch (Exception ex) {
-            ex.printStackTrace();
+            //ex.printStackTrace();
+        	logger.error("Error updating manager for empId=" + empId, ex);
         }
         
     }
 
     //9. View Team Members
     public List<Employee> getTeamMembers(int managerId) {
+    	
+    	logger.info("Fetching team members for managerId=" + managerId);
     	
         List<Employee> list = new ArrayList<Employee>();
         try {
@@ -213,13 +242,17 @@ public class EmployeeService implements EmployeeDao {
                 list.add(map(rs));
             }
         } catch (Exception ex) {
-            ex.printStackTrace();
+            //ex.printStackTrace();
+        	logger.error("Error fetching team members for managerId=" + managerId, ex);
         }
         return list;
     }
 
     //10. View Manager Details
     public Employee getManagerDetails(int empId) {
+    	
+    	logger.debug("Fetching manager details for empId=" + empId);
+    	
         try {
             PreparedStatement ps = connection.prepareStatement(
               "SELECT M.* FROM EMPLOYEE E JOIN EMPLOYEE M ON E.MANAGER_ID = M.EMP_ID WHERE E.EMP_ID=?");
@@ -232,7 +265,8 @@ public class EmployeeService implements EmployeeDao {
             }
 
         } catch (Exception ex) {
-            ex.printStackTrace();
+            //ex.printStackTrace();
+        	logger.error("Error fetching manager details for empId=" + empId, ex);
         }
         return null;
     }
@@ -240,6 +274,7 @@ public class EmployeeService implements EmployeeDao {
     //10. Change Password
     public void changePassword(int empId, String oldPwd, String newPwd) {
 
+    	logger.warn("Change password request for empId=" + empId);
 //        // -------- BASIC VALIDATION --------
 //        if (newPwd.length() < 8) {
 //            System.out.println("Password must be at least 8 characters");
@@ -257,20 +292,26 @@ public class EmployeeService implements EmployeeDao {
             int rows = ps.executeUpdate();
 
             if (rows > 0) {
-                System.out.println("Password Changed Successfully");
+                //System.out.println("Password Changed Successfully");
+            	logger.info("Password changed successfully for empId=" + empId);
             } else {
-                System.out.println("Old password is incorrect");
+                //System.out.println("Old password is incorrect");
+            	logger.warn("Password change failed (old password mismatch) for empId=" + empId);
             }
 
         } catch (Exception e) {
-            System.out.println("Error while changing password");
-            e.printStackTrace();
+            //System.out.println("Error while changing password");
+            //e.printStackTrace();
+            logger.error("Error while changing password for empId=" + empId, e);
         }
+        
     }
 
 
     //12. Update Profile
     public void updateProfile(int empId, String phone, String address, String emergency) {
+    	
+    	logger.info("Updating profile for empId=" + empId);
     	
         try {
             PreparedStatement ps = connection.prepareStatement(
@@ -283,7 +324,8 @@ public class EmployeeService implements EmployeeDao {
             ps.executeUpdate();
 
         } catch (Exception ex) {
-            ex.printStackTrace();
+            //ex.printStackTrace();
+        	logger.error("Error updating profile for empId=" + empId, ex);
         }
         
     }

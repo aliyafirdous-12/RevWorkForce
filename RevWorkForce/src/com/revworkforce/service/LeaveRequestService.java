@@ -8,11 +8,24 @@ import com.revworkforce.model.LeaveRequest;
 
 import com.revworkforce.db.DBConnection;
 
+import org.apache.log4j.Logger;
+
 public class LeaveRequestService implements LeaveRequestDao{
+	
+	private static final Logger logger =
+            Logger.getLogger(LeaveRequestService.class);
 	
 	Connection connection = DBConnection.getConnection();
 	
-	public void applyLeave(LeaveRequest leave) {
+	 public LeaveRequestService(Connection connection) {
+	        this.connection = connection;
+	    }
+	 public LeaveRequestService() {}
+	 
+	 public void applyLeave(LeaveRequest leave) {
+		 
+		 logger.info("Applying leave for empId=" + leave.getEmpId()
+	                + ", type=" + leave.getLeaveType());
 
         try {
         	PreparedStatement ps = connection.prepareStatement(
@@ -28,14 +41,19 @@ public class LeaveRequestService implements LeaveRequestDao{
             ps.setString(5, leave.getReason());
             ps.setString(6, leave.getManagerComment());
             ps.executeUpdate();
+            
+            logger.info("Leave applied successfully for empId=" + leave.getEmpId());
 
         } catch (Exception e) {
-            e.printStackTrace();
+            //e.printStackTrace();
+        	logger.error("Error while applying leave for empId=" + leave.getEmpId(), e);
         }
     }
 	
 	public List<LeaveRequest> getLeavesByEmp(int empId) {
-
+		
+		logger.debug("Fetching leaves for empId=" + empId);
+        
         List<LeaveRequest> list = new ArrayList<LeaveRequest>();
 
         try {
@@ -48,14 +66,20 @@ public class LeaveRequestService implements LeaveRequestDao{
                 LeaveRequest leave = map(rs);
                 list.add(leave);
             }
+            
+            logger.info("Total leaves fetched for empId=" + empId + " = " + list.size());
 
         } catch (Exception e) {
-            e.printStackTrace();
+            //e.printStackTrace();
+        	logger.error("Error while fetching leaves for empId=" + empId, e);
         }
         return list;
     }
 	
 	public boolean cancelLeave(int leaveId) {
+		
+		logger.info("Cancel leave request leaveId=" + leaveId);
+
 
 	    try {
 	        PreparedStatement ps = connection.prepareStatement(
@@ -66,16 +90,25 @@ public class LeaveRequestService implements LeaveRequestDao{
 
 	        int rows = ps.executeUpdate();
 
-	        return rows > 0;
+	       // return rows > 0;
+	        if (rows > 0) {
+                logger.info("Leave cancelled successfully leaveId=" + leaveId);
+                return true;
+            } else {
+                logger.warn("Leave cancel failed (not pending or invalid) leaveId=" + leaveId);
+            }
 
 	    } catch (Exception e) {
-	        e.printStackTrace();
+	        //e.printStackTrace();
+	    	 logger.error("Error while cancelling leave leaveId=" + leaveId, e);
 	    }
 	    return false;
 	}
 
 	
 	public List<LeaveRequest> getPendingLeaves(int managerId) {
+		
+		logger.info("Fetching pending leaves for managerId=" + managerId);
 
         List<LeaveRequest> list = new ArrayList<LeaveRequest>();
 
@@ -88,9 +121,12 @@ public class LeaveRequestService implements LeaveRequestDao{
             while (rs.next()) {
                 list.add(map(rs));
             }
+            
+            logger.info("Pending leaves count for managerId=" + managerId + " = " + list.size());
 
         } catch (Exception e) {
-            e.printStackTrace();
+            //e.printStackTrace();
+        	logger.error("Error while fetching pending leaves for managerId=" + managerId, e);
         }
         return list;
         
@@ -98,6 +134,8 @@ public class LeaveRequestService implements LeaveRequestDao{
 	
 	public void updateLeaveStatus(int leaveId, String status, String comment) {
 
+		logger.info("Updating leave status leaveId=" + leaveId + ", status=" + status);
+		
         try {
             PreparedStatement ps = connection.prepareStatement(
                 "UPDATE LEAVE_REQUEST SET STATUS=?, MANAGER_COMMENT=? WHERE LEAVE_ID=?");
@@ -107,24 +145,38 @@ public class LeaveRequestService implements LeaveRequestDao{
             ps.setInt(3, leaveId);
             ps.executeUpdate();
 
+            logger.info("Leave status updated leaveId=" + leaveId);
+            
         } catch (Exception e) {
-            e.printStackTrace();
+            //e.printStackTrace();
+        	logger.error("Error while updating leave status leaveId=" + leaveId, e);
         }
     }
 
 	public void getLeaveReport() {
+		
+		logger.info("Generating leave report");
 
         try {
             Statement st = connection.createStatement();
             ResultSet rs = st.executeQuery("SELECT * FROM LEAVE_REQUEST");
 
             while (rs.next()) {
-                System.out.println(
-                    rs.getInt("LEAVE_ID") + " | " +
-                    rs.getInt("EMP_ID") + " | " +
-                    rs.getString("LEAVE_TYPE") + " | " +
-                    rs.getString("STATUS"));
-            }
+//                System.out.println(
+//                    rs.getInt("LEAVE_ID") + " | " +
+//                    rs.getInt("EMP_ID") + " | " +
+//                    rs.getString("LEAVE_TYPE") + " | " +
+//                    rs.getString("STATUS"));
+//            }
+            	logger.debug(
+                        "LeaveId=" + rs.getInt("LEAVE_ID") +
+                        ", EmpId=" + rs.getInt("EMP_ID") +
+                        ", Type=" + rs.getString("LEAVE_TYPE") +
+                        ", Status=" + rs.getString("STATUS")
+                    );
+                }
+
+                logger.info("Leave report generated successfully");
 
         } catch (Exception e) {
             e.printStackTrace();

@@ -4,6 +4,7 @@ import java.sql.*;
 import java.util.*;
 
 import com.revworkforce.db.DBConnection;
+import com.revworkforce.util.ValidationUtil;
 
 public class LoginApp {
 
@@ -15,8 +16,19 @@ public class LoginApp {
         System.out.print("Enter Employee ID: ");
         int empId = sc.nextInt();
 
-        System.out.print("Enter Password: ");
-        String password = sc.next();
+        //System.out.print("Enter Password: ");
+        //String password = sc.next();
+        String password;
+        while (true) {
+            try {
+                System.out.print("Enter Password: ");
+                password = sc.next();
+                ValidationUtil.validatePassword(password);
+                break;
+            } catch (Exception e) {
+                System.out.println(e.getMessage());
+            }
+        }
 
         try {
             Connection connection = DBConnection.getConnection();

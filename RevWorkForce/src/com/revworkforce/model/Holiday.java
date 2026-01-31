@@ -8,6 +8,15 @@ public class Holiday {
     private String holidayName;
     private Date holidayDate;
     
+    public Holiday() {}
+    
+	public Holiday(int holidayId, String holidayName, Date holidayDate) {
+
+		this.holidayId = holidayId;
+		this.holidayName = holidayName;
+		this.holidayDate = holidayDate;
+	}
+	
 	public int getHolidayId() {
 		return holidayId;
 	}

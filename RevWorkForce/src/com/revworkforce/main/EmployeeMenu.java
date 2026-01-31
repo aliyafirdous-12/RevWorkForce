@@ -27,6 +27,8 @@ import com.revworkforce.dao.NotificationDao;
 
 import com.revworkforce.service.PerformanceService;
 import com.revworkforce.dao.PerformanceDao;
+import com.revworkforce.util.SessionManager;
+import com.revworkforce.util.ValidationUtil;
 
 public class EmployeeMenu {
 
@@ -45,6 +47,14 @@ public class EmployeeMenu {
     }
 
     public void show() {
+    	
+    	// Session check
+        if (SessionManager.isSessionExpired()) {
+            System.out.println("Session expired. Please login again.");
+            new LoginApp().login();
+            return;
+        }
+        SessionManager.refresh();
 
         while (true) {
         	System.out.println("Login Successful (EMPLOYEE) ");
@@ -160,10 +170,23 @@ public class EmployeeMenu {
                 System.out.print("Enter Old Password: ");
                 String oldPwd = sc.next();
 
-                System.out.print("Enter New Password: ");
-                String newPwd = sc.next();
+                //System.out.print("Enter New Password: ");
+                //String newPwd = sc.next();
+                //empDao.changePassword(empId, oldPwd, newPwd);
+                while (true) {
+                    try {
+                        System.out.print("Enter New Password: ");
+                        String newPwd = sc.next();
 
-                empDao.changePassword(empId, oldPwd, newPwd);
+                        ValidationUtil.validatePassword(newPwd);
+
+                        empDao.changePassword(empId, oldPwd, newPwd);
+                        System.out.println("Password Changed Successfully ✅");
+                        break;
+                    } catch (Exception e) {
+                        System.out.println(e.getMessage());
+                    }
+                }        
                 break;
             case 15:
                 System.out.println("Logout successful");

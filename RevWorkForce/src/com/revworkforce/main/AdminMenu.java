@@ -16,8 +16,8 @@ import com.revworkforce.dao.HolidayDao;
 import com.revworkforce.model.Holiday;
 import com.revworkforce.service.HolidayService;
 
-import com.revworkforce.util.ValidationUtil;
 import com.revworkforce.util.SessionManager;
+import com.revworkforce.util.ValidationUtil;
 
 public class AdminMenu {
 
@@ -131,30 +131,96 @@ public class AdminMenu {
 
         System.out.print("Enter ID: ");
         emp.setEmpId(sc.nextInt());
+        sc.nextLine();
+        
+       // System.out.print("Enter Name: ");
+       //emp.setName(sc.next());
+        while (true) {
+            try {
+                System.out.print("Enter Name: ");
+                String name = sc.nextLine();
+                ValidationUtil.validateName(name);
+                emp.setName(name);
+                break;
+            } catch (Exception e) {
+                System.out.println(e.getMessage());
+            }
+        }
 
-        System.out.print("Enter Name: ");
-        emp.setName(sc.next());
+        //System.out.print("Enter Email: ");
+        //emp.setEmail(sc.next());
+        while (true) {
+            try {
+                System.out.print("Email: ");
+                String email = sc.next();
+                ValidationUtil.validateEmail(email);
+                emp.setEmail(email);
+                break;
+            } catch (Exception e) {
+                System.out.println(e.getMessage());
+            }
+        }
 
-        System.out.print("Enter Email: ");
-        emp.setEmail(sc.next());
+        //System.out.print("Enter Password: ");
+        //emp.setPassword(sc.next());
+        while (true) {
+            try {
+                System.out.print("Password: ");
+                String pwd = sc.next();
+                ValidationUtil.validatePassword(pwd);
+                emp.setPassword(pwd);
+                break;
+            } catch (Exception e) {
+                System.out.println(e.getMessage());
+            }
+        }
 
-        System.out.print("Enter Password: ");
-        emp.setPassword(sc.next());
-
-        System.out.print("Enter Phone: ");
-        emp.setPhone(sc.next());
-
+        //System.out.print("Enter Phone: ");
+        //emp.setPhone(sc.next());
+        while (true) {
+            try {
+                System.out.print("Phone: ");
+                String phone = sc.next();
+                ValidationUtil.validatePhone(phone);
+                emp.setPhone(phone);
+                break;
+            } catch (Exception e) {
+                System.out.println(e.getMessage());
+            }
+        }
+        
+        sc.nextLine();
         System.out.print("Enter Address: ");
-        emp.setAddress(sc.next());
+        emp.setAddress(sc.nextLine());
         
         System.out.print("Enter Emergency Contact: ");
         emp.setEmergencyContact(sc.next());
         
-        System.out.print("DOB (yyyy-mm-dd): ");
-        emp.setDob(Date.valueOf(sc.next()));
+        //System.out.print("DOB (yyyy-mm-dd): ");
+        //emp.setDob(Date.valueOf(sc.next()));
+        while (true) {
+            try {
+                System.out.print("DOB (yyyy-mm-dd): ");
+                emp.setDob(java.sql.Date.valueOf(sc.next()));
+                break;
+            } catch (Exception e) {
+                System.out.println("Invalid Date format");
+            }
+        }
         
-        System.out.print("Enter Role (EMPLOYEE/MANAGER): ");
-        emp.setRole(sc.next());
+        //System.out.print("Enter Role (EMPLOYEE/MANAGER): ");
+        //emp.setRole(sc.next());
+        while (true) {
+            try {
+                System.out.print("Role (ADMIN/MANAGER/EMPLOYEE): ");
+                String role = sc.next();
+                ValidationUtil.validateRole(role);
+                emp.setRole(role);
+                break;
+            } catch (Exception e) {
+                System.out.println(e.getMessage());
+            }
+        }
 
         System.out.print("Enter Manager ID (or 0): ");
         int mid = sc.nextInt();
@@ -162,12 +228,22 @@ public class AdminMenu {
 
         emp.setStatus("ACTIVE");
         
-        System.out.print("Salary: ");
-        emp.setSalary(sc.nextDouble());
+        //System.out.print("Salary: ");
+        //emp.setSalary(sc.nextDouble());
+        while (true) {
+            try {
+                System.out.print("Salary: ");
+                double salary = sc.nextDouble();
+                ValidationUtil.validateSalary(salary);
+                emp.setSalary(salary);
+                break;
+            } catch (Exception e) {
+                System.out.println(e.getMessage());
+            }
+        }
+        
         sc.nextLine();
-
         System.out.print("Designation: ");
-//        sc.nextLine();
         emp.setDesignation(sc.nextLine());
 
         System.out.print("Enter Department ID: ");
@@ -201,12 +277,33 @@ public class AdminMenu {
         e.setEmpId(sc.nextInt());
         sc.nextLine();
         
-        System.out.print("Name: ");
-//        sc.nextLine();
-        e.setName(sc.nextLine());
+        //System.out.print("Name: ");
+        //e.setName(sc.nextLine());
+        while (true) {
+            try {
+                System.out.print("Enter Name: ");
+                String name = sc.nextLine();
+                ValidationUtil.validateName(name);
+                e.setName(name);
+                break;
+            } catch (Exception ex) {
+                System.out.println(ex.getMessage());
+            }
+        }
 
-        System.out.print("Phone: ");
-        e.setPhone(sc.next());
+        //System.out.print("Phone: ");
+        //e.setPhone(sc.next());
+        while (true) {
+            try {
+                System.out.print("Phone: ");
+                String phone = sc.next();
+                ValidationUtil.validatePhone(phone);
+                e.setPhone(phone);
+                break;
+            } catch (Exception ex) {
+                System.out.println(ex.getMessage());
+            }
+        }
 
         System.out.print("Address: ");
         e.setAddress(sc.next());
@@ -218,10 +315,9 @@ public class AdminMenu {
 
         System.out.print("Salary: ");
         e.setSalary(sc.nextDouble());
-        sc.nextLine();
         
+        sc.nextLine();
         System.out.print("Designation: ");
-//        sc.nextLine();
         e.setDesignation(sc.nextLine());
 
 //        System.out.print("Dept ID: ");
@@ -295,7 +391,7 @@ public class AdminMenu {
         h.setHolidayDate(Date.valueOf(sc.next()));
 
         holidayDao.addHoliday(h);
-        System.out.println("Holiday Added ✅");
+        System.out.println("Holiday Added");
     }
 
     //8.Reset Password
@@ -308,7 +404,7 @@ public class AdminMenu {
         String pwd = sc.next();
 
         empDao.resetPassword(id, pwd);
-        System.out.println("Password Reset Successfully ✅");
+        System.out.println("Password Reset Successfully");
     }
  
 }

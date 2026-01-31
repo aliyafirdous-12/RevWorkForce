@@ -11,5 +11,6 @@
 	<classpathentry kind="lib" path="D:/REVATURE-COGNIZANT/reload4j-1.2.22.jar.zip"/>
 	<classpathentry kind="lib" path="D:/REVATURE-COGNIZANT/slf4j-api-1.7.36.jar.zip"/>
 	<classpathentry kind="lib" path="D:/REVATURE-COGNIZANT/slf4j-reload4j-1.7.36.jar.zip"/>
+	<classpathentry kind="lib" path="D:/REVATURE-COGNIZANT/log4j-1.2.17.jar"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>

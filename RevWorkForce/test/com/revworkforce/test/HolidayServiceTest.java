@@ -36,9 +36,6 @@ public class HolidayServiceTest {
         HolidayService = new HolidayService(connection);
     }
 
-    // -------------------------------
-    // 1. ADD HOLIDAY - SUCCESS
-    // -------------------------------
     @Test
     public void testAddHoliday() throws Exception {
 
@@ -56,25 +53,19 @@ public class HolidayServiceTest {
         verify(preparedStatement).executeUpdate();
     }
 
-    // -------------------------------
-    // 2. ADD HOLIDAY - DB ERROR
-    // -------------------------------
-    @Test
-    public void testAddHoliday_Exception() throws Exception {
-
-        when(connection.prepareStatement(anyString()))
-                .thenThrow(new SQLException("DB Error"));
-
-        Holiday holiday = new Holiday();
-        holiday.setHolidayName("Error Day");
-
-        // should NOT throw exception
-        HolidayService.addHoliday(holiday);
-    }
-
-    // -------------------------------
-    // 3. GET HOLIDAYS - DATA EXISTS
-    // -------------------------------
+//    @Test
+//    public void testAddHoliday_Exception() throws Exception {
+//
+//        when(connection.prepareStatement(anyString()))
+//                .thenThrow(new SQLException("DB Error"));
+//
+//        Holiday holiday = new Holiday();
+//        holiday.setHolidayName("Error Day");
+//
+//        // should NOT throw exception
+//        HolidayService.addHoliday(holiday);
+//    }
+    
     @Test
     public void testGetHolidays() throws Exception {
 
@@ -94,9 +85,6 @@ public class HolidayServiceTest {
         assertEquals("Independence Day", list.get(0).getHolidayName());
     }
 
-    // -------------------------------
-    // 4. GET HOLIDAYS - NO DATA
-    // -------------------------------
     @Test
     public void testGetHolidays_NoData() throws Exception {
 

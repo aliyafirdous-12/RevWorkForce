@@ -15,6 +15,7 @@ import com.revworkforce.service.EmployeeService;
 import com.revworkforce.service.LeaveBalanceService;
 import com.revworkforce.service.LeaveRequestService;
 import com.revworkforce.service.PerformanceService;
+import com.revworkforce.util.SessionManager;
 
 public class ManagerMenu {
 
@@ -31,6 +32,14 @@ public class ManagerMenu {
     }
     
     public void show() {
+    	
+    	// Session check
+        if (SessionManager.isSessionExpired()) {
+            System.out.println("Session expired. Please login again.");
+            new LoginApp().login();
+            return;
+        }
+        SessionManager.refresh();
 
         while (true) {
         	System.out.println("Login Successful (MANAGER) ");

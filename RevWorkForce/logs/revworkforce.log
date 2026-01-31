@@ -1,0 +1,177 @@
+2026-01-31 01:42:51 INFO  com.revworkforce.test.Log4jTest:12 - Log4j working successfully in RevWorkForce project
+2026-01-31 01:42:51 WARN  com.revworkforce.test.Log4jTest:13 - This is a warning log
+2026-01-31 01:42:51 ERROR com.revworkforce.test.Log4jTest:14 - This is a sample error log
+2026-01-31 01:59:18 INFO  com.revworkforce.test.Log4jTest:12 - Log4j working successfully in RevWorkForce project
+2026-01-31 01:59:18 WARN  com.revworkforce.test.Log4jTest:13 - This is a warning log
+2026-01-31 01:59:18 ERROR com.revworkforce.test.Log4jTest:14 - This is a sample error log
+2026-01-31 01:59:49 INFO  com.revworkforce.test.Log4jTest:12 - Log4j working successfully in RevWorkForce project
+2026-01-31 01:59:49 WARN  com.revworkforce.test.Log4jTest:13 - This is a warning log
+2026-01-31 01:59:49 ERROR com.revworkforce.test.Log4jTest:14 - This is a sample error log
+2026-01-31 02:09:13 INFO  com.revworkforce.test.Log4jTest:12 - Log4j working successfully in RevWorkForce project
+2026-01-31 02:09:13 WARN  com.revworkforce.test.Log4jTest:13 - This is a warning log
+2026-01-31 02:09:13 ERROR com.revworkforce.test.Log4jTest:14 - This is a sample error log
+2026-01-31 09:09:31 INFO  com.revworkforce.test.Log4jTest:12 - Log4j working successfully in RevWorkForce project
+2026-01-31 09:09:31 WARN  com.revworkforce.test.Log4jTest:13 - This is a warning log
+2026-01-31 09:09:31 ERROR com.revworkforce.test.Log4jTest:14 - This is a sample error log
+2026-01-31 09:20:11 INFO  com.revworkforce.service.EmployeeService:70 - Updating employee empId=0
+2026-01-31 09:20:11 INFO  com.revworkforce.service.EmployeeService:87 - Employee updated successfully empId=0
+2026-01-31 09:20:11 INFO  com.revworkforce.service.EmployeeService:29 - Add Employee started for email=aliya@gmail.com
+2026-01-31 09:20:11 INFO  com.revworkforce.service.EmployeeService:57 - Employee added successfully: aliya@gmail.com
+2026-01-31 09:20:11 INFO  com.revworkforce.service.EmployeeService:210 - Updating manager for empId=1
+2026-01-31 09:20:11 INFO  com.revworkforce.service.EmployeeService:231 - Fetching team members for managerId=2
+2026-01-31 09:20:11 INFO  com.revworkforce.service.EmployeeService:122 - Fetching all employees
+2026-01-31 09:20:11 DEBUG com.revworkforce.service.EmployeeService:99 - Fetching employee by id=1
+2026-01-31 09:20:11 WARN  com.revworkforce.service.EmployeeService:190 - Resetting password for empId=1
+2026-01-31 09:20:11 INFO  com.revworkforce.service.EmployeeService:147 - Updating status for empId=1, status=ACTIVE
+2026-01-31 09:20:11 DEBUG com.revworkforce.service.EmployeeService:167 - Searching employee with key=DEV
+2026-01-31 09:20:11 DEBUG com.revworkforce.service.EmployeeService:254 - Fetching manager details for empId=1
+2026-01-31 09:20:11 INFO  com.revworkforce.service.EmployeeService:314 - Updating profile for empId=1
+2026-01-31 09:20:11 WARN  com.revworkforce.service.EmployeeService:277 - Change password request for empId=1
+2026-01-31 09:20:11 INFO  com.revworkforce.service.EmployeeService:296 - Password changed successfully for empId=1
+2026-01-31 09:21:02 INFO  com.revworkforce.service.HolidayService:47 - Fetching all holidays
+2026-01-31 09:21:02 INFO  com.revworkforce.service.HolidayService:65 - Total holidays fetched: 1
+2026-01-31 09:21:02 INFO  com.revworkforce.service.HolidayService:27 - Adding holiday: Republic Day
+2026-01-31 09:21:02 INFO  com.revworkforce.service.HolidayService:36 - Holiday added successfully: Republic Day
+2026-01-31 09:21:02 INFO  com.revworkforce.service.HolidayService:47 - Fetching all holidays
+2026-01-31 09:21:02 INFO  com.revworkforce.service.HolidayService:65 - Total holidays fetched: 0
+2026-01-31 09:21:55 INFO  com.revworkforce.service.LeaveBalanceService:27 - Creating leave balance for empId=101
+2026-01-31 09:21:55 INFO  com.revworkforce.service.LeaveBalanceService:39 - Leave balance created successfully for empId=101
+2026-01-31 09:21:55 INFO  com.revworkforce.service.LeaveBalanceService:27 - Creating leave balance for empId=102
+2026-01-31 09:21:55 WARN  com.revworkforce.service.LeaveBalanceService:41 - Leave balance creation failed for empId=102
+2026-01-31 09:21:55 DEBUG com.revworkforce.service.LeaveBalanceService:81 - Fetching leave balance for empId=999
+2026-01-31 09:21:55 WARN  com.revworkforce.service.LeaveBalanceService:102 - No leave balance found for empId=999
+2026-01-31 09:21:55 DEBUG com.revworkforce.service.LeaveBalanceService:81 - Fetching leave balance for empId=101
+2026-01-31 09:21:55 INFO  com.revworkforce.service.LeaveBalanceService:100 - Leave balance fetched for empId=101
+2026-01-31 09:21:55 INFO  com.revworkforce.service.LeaveBalanceService:56 - Updating leave balance for empId=101
+2026-01-31 09:21:55 INFO  com.revworkforce.service.LeaveBalanceService:70 - Leave balance updated for empId=101
+2026-01-31 09:22:05 INFO  com.revworkforce.service.LeaveRequestService:81 - Cancel leave request leaveId=11
+2026-01-31 09:22:05 WARN  com.revworkforce.service.LeaveRequestService:98 - Leave cancel failed (not pending or invalid) leaveId=11
+2026-01-31 09:22:05 INFO  com.revworkforce.service.LeaveRequestService:81 - Cancel leave request leaveId=10
+2026-01-31 09:22:05 INFO  com.revworkforce.service.LeaveRequestService:95 - Leave cancelled successfully leaveId=10
+2026-01-31 09:22:05 INFO  com.revworkforce.service.LeaveRequestService:137 - Updating leave status leaveId=5, status=APPROVED
+2026-01-31 09:22:05 INFO  com.revworkforce.service.LeaveRequestService:148 - Leave status updated leaveId=5
+2026-01-31 09:22:05 INFO  com.revworkforce.service.LeaveRequestService:111 - Fetching pending leaves for managerId=201
+2026-01-31 09:22:05 INFO  com.revworkforce.service.LeaveRequestService:125 - Pending leaves count for managerId=201 = 1
+2026-01-31 09:22:05 DEBUG com.revworkforce.service.LeaveRequestService:55 - Fetching leaves for empId=101
+2026-01-31 09:22:05 INFO  com.revworkforce.service.LeaveRequestService:70 - Total leaves fetched for empId=101 = 1
+2026-01-31 09:22:05 INFO  com.revworkforce.service.LeaveRequestService:27 - Applying leave for empId=101, type=CL
+2026-01-31 09:22:05 INFO  com.revworkforce.service.LeaveRequestService:45 - Leave applied successfully for empId=101
+2026-01-31 09:22:05 INFO  com.revworkforce.service.LeaveRequestService:158 - Generating leave report
+2026-01-31 09:22:05 DEBUG com.revworkforce.service.LeaveRequestService:171 - LeaveId=0, EmpId=0, Type=null, Status=null
+2026-01-31 09:22:05 INFO  com.revworkforce.service.LeaveRequestService:179 - Leave report generated successfully
+2026-01-31 09:22:28 INFO  com.revworkforce.service.NotificationService:85 - Marking notifications as read for empId=101
+2026-01-31 09:22:28 INFO  com.revworkforce.service.NotificationService:93 - Notifications marked as read for empId=101
+2026-01-31 09:22:28 DEBUG com.revworkforce.service.NotificationService:104 - Fetching unread notification count for empId=101
+2026-01-31 09:22:28 INFO  com.revworkforce.service.NotificationService:116 - Unread notification count for empId=101 = 3
+2026-01-31 09:22:28 INFO  com.revworkforce.service.NotificationService:28 - Sending notification to empId=101
+2026-01-31 09:22:28 INFO  com.revworkforce.service.NotificationService:38 - Notification sent successfully to empId=101
+2026-01-31 09:22:28 DEBUG com.revworkforce.service.NotificationService:49 - Fetching notifications for empId=101
+2026-01-31 09:22:28 INFO  com.revworkforce.service.NotificationService:72 - Total notifications fetched for empId=101 = 1
+2026-01-31 09:37:57 INFO  com.revworkforce.test.Log4jTest:12 - Log4j working successfully in RevWorkForce project
+2026-01-31 09:37:57 WARN  com.revworkforce.test.Log4jTest:13 - This is a warning log
+2026-01-31 09:37:57 ERROR com.revworkforce.test.Log4jTest:14 - This is a sample error log
+2026-01-31 09:38:05 INFO  com.revworkforce.service.PerformanceService:219 - Updating goal progress goalId=10, progress=80%
+2026-01-31 09:38:05 INFO  com.revworkforce.service.PerformanceService:231 - Goal progress updated successfully goalId=10
+2026-01-31 09:38:05 INFO  com.revworkforce.service.PerformanceService:246 - Generating team performance report for managerId=201
+2026-01-31 09:38:05 DEBUG com.revworkforce.service.PerformanceService:266 - EmpId: 0 | Name: null | Goal: null | Progress: 0%
+2026-01-31 09:38:05 INFO  com.revworkforce.service.PerformanceService:280 - Team performance report generated for managerId=201
+2026-01-31 09:38:05 INFO  com.revworkforce.service.PerformanceService:29 - Submitting performance review for empId=101
+2026-01-31 09:38:05 INFO  com.revworkforce.service.PerformanceService:48 - Performance review submitted successfully for empId=101
+2026-01-31 09:38:05 INFO  com.revworkforce.service.PerformanceService:65 - Fetching all performance reviews
+2026-01-31 09:38:05 INFO  com.revworkforce.service.PerformanceService:87 - Total performance reviews fetched = 1
+2026-01-31 09:38:05 INFO  com.revworkforce.service.PerformanceService:189 - Fetching team goals for managerId=201
+2026-01-31 09:38:05 INFO  com.revworkforce.service.PerformanceService:208 - Total team goals fetched for managerId=201 = 1
+2026-01-31 09:38:05 INFO  com.revworkforce.service.PerformanceService:99 - Updating feedback for reviewId=1
+2026-01-31 09:38:05 INFO  com.revworkforce.service.PerformanceService:110 - Feedback updated successfully for reviewId=1
+2026-01-31 09:38:05 INFO  com.revworkforce.service.PerformanceService:120 - Adding goal for empId=101
+2026-01-31 09:38:05 INFO  com.revworkforce.service.PerformanceService:139 - Goal added successfully for empId=101
+2026-01-31 09:38:05 DEBUG com.revworkforce.service.PerformanceService:155 - Fetching goals for empId=101
+2026-01-31 09:38:05 INFO  com.revworkforce.service.PerformanceService:178 - Total goals fetched for empId=101 = 1
+2026-01-31 10:31:07 INFO  com.revworkforce.service.EmployeeService:29 - Add Employee started for email=athiya@gmail.com
+2026-01-31 10:31:07 INFO  com.revworkforce.service.EmployeeService:57 - Employee added successfully: athiya@gmail.com
+2026-01-31 10:31:07 INFO  com.revworkforce.service.LeaveBalanceService:27 - Creating leave balance for empId=7
+2026-01-31 10:31:07 INFO  com.revworkforce.service.LeaveBalanceService:39 - Leave balance created successfully for empId=7
+2026-01-31 10:31:19 INFO  com.revworkforce.service.EmployeeService:122 - Fetching all employees
+2026-01-31 10:34:16 INFO  com.revworkforce.service.EmployeeService:70 - Updating employee empId=4
+2026-01-31 10:34:16 INFO  com.revworkforce.service.EmployeeService:87 - Employee updated successfully empId=4
+2026-01-31 10:34:46 INFO  com.revworkforce.service.EmployeeService:147 - Updating status for empId=4, status=INACTIVE
+2026-01-31 10:35:04 DEBUG com.revworkforce.service.EmployeeService:167 - Searching employee with key=Mah
+2026-01-31 10:35:30 INFO  com.revworkforce.service.LeaveBalanceService:56 - Updating leave balance for empId=7
+2026-01-31 10:35:30 INFO  com.revworkforce.service.LeaveBalanceService:70 - Leave balance updated for empId=7
+2026-01-31 10:36:37 INFO  com.revworkforce.service.HolidayService:27 - Adding holiday: CHRISTMAS
+2026-01-31 10:36:37 INFO  com.revworkforce.service.HolidayService:36 - Holiday added successfully: CHRISTMAS
+2026-01-31 10:37:07 WARN  com.revworkforce.service.EmployeeService:190 - Resetting password for empId=4
+2026-01-31 10:37:27 INFO  com.revworkforce.service.LeaveRequestService:158 - Generating leave report
+2026-01-31 10:37:27 DEBUG com.revworkforce.service.LeaveRequestService:171 - LeaveId=2, EmpId=5, Type=SL, Status=PENDING
+2026-01-31 10:37:27 DEBUG com.revworkforce.service.LeaveRequestService:171 - LeaveId=3, EmpId=3, Type=CL, Status=PENDING
+2026-01-31 10:37:27 DEBUG com.revworkforce.service.LeaveRequestService:171 - LeaveId=4, EmpId=5, Type=CL, Status=REJECTED
+2026-01-31 10:37:27 DEBUG com.revworkforce.service.LeaveRequestService:171 - LeaveId=1, EmpId=5, Type=CL, Status=APPROVED
+2026-01-31 10:37:27 INFO  com.revworkforce.service.LeaveRequestService:179 - Leave report generated successfully
+2026-01-31 10:41:30 INFO  com.revworkforce.service.EmployeeService:210 - Updating manager for empId=4
+2026-01-31 10:57:24 INFO  com.revworkforce.service.EmployeeService:29 - Add Employee started for email=aliya@gmail.com
+2026-01-31 10:57:24 INFO  com.revworkforce.service.EmployeeService:57 - Employee added successfully: aliya@gmail.com
+2026-01-31 10:57:24 INFO  com.revworkforce.service.EmployeeService:70 - Updating employee empId=0
+2026-01-31 10:57:24 INFO  com.revworkforce.service.EmployeeService:87 - Employee updated successfully empId=0
+2026-01-31 10:57:24 DEBUG com.revworkforce.service.EmployeeService:99 - Fetching employee by id=1
+2026-01-31 10:57:24 INFO  com.revworkforce.service.EmployeeService:122 - Fetching all employees
+2026-01-31 10:57:24 DEBUG com.revworkforce.service.EmployeeService:167 - Searching employee with key=DEV
+2026-01-31 10:57:24 INFO  com.revworkforce.service.EmployeeService:147 - Updating status for empId=1, status=ACTIVE
+2026-01-31 10:57:24 WARN  com.revworkforce.service.EmployeeService:190 - Resetting password for empId=1
+2026-01-31 10:57:24 INFO  com.revworkforce.service.EmployeeService:231 - Fetching team members for managerId=2
+2026-01-31 10:57:24 INFO  com.revworkforce.service.EmployeeService:210 - Updating manager for empId=1
+2026-01-31 10:57:24 WARN  com.revworkforce.service.EmployeeService:277 - Change password request for empId=1
+2026-01-31 10:57:24 INFO  com.revworkforce.service.EmployeeService:296 - Password changed successfully for empId=1
+2026-01-31 10:57:24 INFO  com.revworkforce.service.EmployeeService:314 - Updating profile for empId=1
+2026-01-31 10:57:24 DEBUG com.revworkforce.service.EmployeeService:254 - Fetching manager details for empId=1
+2026-01-31 11:10:01 DEBUG com.revworkforce.service.EmployeeService:99 - Fetching employee by id=6
+2026-01-31 11:19:15 INFO  com.revworkforce.service.EmployeeService:314 - Updating profile for empId=6
+2026-01-31 11:31:43 DEBUG com.revworkforce.service.EmployeeService:254 - Fetching manager details for empId=6
+2026-01-31 11:34:27 INFO  com.revworkforce.service.LeaveRequestService:27 - Applying leave for empId=6, type=CL
+2026-01-31 11:34:27 INFO  com.revworkforce.service.LeaveRequestService:45 - Leave applied successfully for empId=6
+2026-01-31 11:34:37 DEBUG com.revworkforce.service.LeaveRequestService:55 - Fetching leaves for empId=6
+2026-01-31 11:34:37 INFO  com.revworkforce.service.LeaveRequestService:70 - Total leaves fetched for empId=6 = 1
+2026-01-31 11:34:53 INFO  com.revworkforce.service.LeaveRequestService:81 - Cancel leave request leaveId=4
+2026-01-31 11:34:53 WARN  com.revworkforce.service.LeaveRequestService:98 - Leave cancel failed (not pending or invalid) leaveId=4
+2026-01-31 11:35:11 DEBUG com.revworkforce.service.LeaveBalanceService:81 - Fetching leave balance for empId=6
+2026-01-31 11:35:11 INFO  com.revworkforce.service.LeaveBalanceService:100 - Leave balance fetched for empId=6
+2026-01-31 11:35:25 INFO  com.revworkforce.service.HolidayService:47 - Fetching all holidays
+2026-01-31 11:35:25 INFO  com.revworkforce.service.HolidayService:65 - Total holidays fetched: 3
+2026-01-31 11:35:30 DEBUG com.revworkforce.service.NotificationService:49 - Fetching notifications for empId=6
+2026-01-31 11:35:30 INFO  com.revworkforce.service.NotificationService:72 - Total notifications fetched for empId=6 = 0
+2026-01-31 11:36:55 INFO  com.revworkforce.service.PerformanceService:29 - Submitting performance review for empId=6
+2026-01-31 11:36:55 INFO  com.revworkforce.service.PerformanceService:48 - Performance review submitted successfully for empId=6
+2026-01-31 11:39:40 INFO  com.revworkforce.service.PerformanceService:120 - Adding goal for empId=6
+2026-01-31 11:39:40 INFO  com.revworkforce.service.PerformanceService:139 - Goal added successfully for empId=6
+2026-01-31 11:39:50 DEBUG com.revworkforce.service.PerformanceService:155 - Fetching goals for empId=6
+2026-01-31 11:39:50 INFO  com.revworkforce.service.PerformanceService:178 - Total goals fetched for empId=6 = 1
+2026-01-31 11:40:09 INFO  com.revworkforce.service.PerformanceService:219 - Updating goal progress goalId=2, progress=60%
+2026-01-31 11:40:09 INFO  com.revworkforce.service.PerformanceService:231 - Goal progress updated successfully goalId=2
+2026-01-31 11:41:04 WARN  com.revworkforce.service.EmployeeService:277 - Change password request for empId=6
+2026-01-31 11:41:04 INFO  com.revworkforce.service.EmployeeService:296 - Password changed successfully for empId=6
+2026-01-31 11:41:24 WARN  com.revworkforce.service.EmployeeService:277 - Change password request for empId=6
+2026-01-31 11:41:24 INFO  com.revworkforce.service.EmployeeService:296 - Password changed successfully for empId=6
+2026-01-31 11:44:35 INFO  com.revworkforce.service.EmployeeService:231 - Fetching team members for managerId=3
+2026-01-31 11:44:45 INFO  com.revworkforce.service.LeaveRequestService:111 - Fetching pending leaves for managerId=3
+2026-01-31 11:44:45 INFO  com.revworkforce.service.LeaveRequestService:125 - Pending leaves count for managerId=3 = 2
+2026-01-31 11:45:45 INFO  com.revworkforce.service.LeaveRequestService:137 - Updating leave status leaveId=2, status=APPROVED
+2026-01-31 11:45:45 INFO  com.revworkforce.service.LeaveRequestService:148 - Leave status updated leaveId=2
+2026-01-31 11:45:48 INFO  com.revworkforce.service.PerformanceService:65 - Fetching all performance reviews
+2026-01-31 11:45:48 INFO  com.revworkforce.service.PerformanceService:87 - Total performance reviews fetched = 2
+2026-01-31 11:46:02 INFO  com.revworkforce.service.PerformanceService:99 - Updating feedback for reviewId=2
+2026-01-31 11:46:02 INFO  com.revworkforce.service.PerformanceService:110 - Feedback updated successfully for reviewId=2
+2026-01-31 11:46:15 INFO  com.revworkforce.service.PerformanceService:189 - Fetching team goals for managerId=3
+2026-01-31 11:46:15 INFO  com.revworkforce.service.PerformanceService:208 - Total team goals fetched for managerId=3 = 3
+2026-01-31 11:46:23 INFO  com.revworkforce.service.PerformanceService:246 - Generating team performance report for managerId=3
+2026-01-31 11:46:23 DEBUG com.revworkforce.service.PerformanceService:266 - EmpId: 2 | Name: Divya | Goal: BACKEND COMPLETE | Progress: 60%
+2026-01-31 11:46:23 DEBUG com.revworkforce.service.PerformanceService:266 - EmpId: 6 | Name: Srivani | Goal: TASK | Progress: 0%
+2026-01-31 11:46:23 DEBUG com.revworkforce.service.PerformanceService:266 - EmpId: 5 | Name: Mahita | Goal: BACKEND_PROJECT | Progress: 90%
+2026-01-31 11:46:23 INFO  com.revworkforce.service.PerformanceService:280 - Team performance report generated for managerId=3
+2026-01-31 11:46:34 INFO  com.revworkforce.service.EmployeeService:231 - Fetching team members for managerId=3
+2026-01-31 11:46:34 DEBUG com.revworkforce.service.LeaveBalanceService:81 - Fetching leave balance for empId=6
+2026-01-31 11:46:34 INFO  com.revworkforce.service.LeaveBalanceService:100 - Leave balance fetched for empId=6
+2026-01-31 11:46:34 DEBUG com.revworkforce.service.LeaveBalanceService:81 - Fetching leave balance for empId=2
+2026-01-31 11:46:34 WARN  com.revworkforce.service.LeaveBalanceService:102 - No leave balance found for empId=2
+2026-01-31 11:46:34 DEBUG com.revworkforce.service.LeaveBalanceService:81 - Fetching leave balance for empId=5
+2026-01-31 11:46:34 WARN  com.revworkforce.service.LeaveBalanceService:102 - No leave balance found for empId=5
+2026-01-31 11:46:34 DEBUG com.revworkforce.service.LeaveBalanceService:81 - Fetching leave balance for empId=7
+2026-01-31 11:46:34 INFO  com.revworkforce.service.LeaveBalanceService:100 - Leave balance fetched for empId=7

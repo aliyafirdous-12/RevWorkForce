@@ -5,18 +5,27 @@ import com.revworkforce.exception.ValidationException;
 public class ValidationUtil {
 
 	//1. Email Validation
-    public static boolean isValidEmail(String email) throws ValidationException{
+	public static void validateEmail(String email) throws ValidationException {
 
-        if (email == null || email.isEmpty())
-        	throw new ValidationException("Email must not be empty and null");
+        if (email == null || email.trim().isEmpty())
+            throw new ValidationException("Email cannot be empty");
+
+        if (email.contains(" "))
+            throw new ValidationException("Email should not contain spaces");
 
         if (!email.contains("@") || !email.contains("."))
-        	throw new ValidationException("Email must must contains '@' and '.'");
+            throw new ValidationException("Email must contain @ and .");
 
-        if (email.startsWith("@") || email.endsWith("@"))
-        	throw new ValidationException("Email must not start and end with '@'");
+        if (!email.endsWith("@gmail.com"))
+            throw new ValidationException("Only @gmail.com emails are allowed");
 
-        return true;
+        int atIndex = email.indexOf("@");
+        if (atIndex < 3)
+            throw new ValidationException("Email username too short");
+
+        int dotIndex = email.lastIndexOf(".");
+        if (email.length() - dotIndex - 1 < 2)
+            throw new ValidationException("Domain extension must be at least 2 letters");
     }
 
     // 2. Password Validation
@@ -43,10 +52,17 @@ public class ValidationUtil {
             	hasSpecial = true;
         }
 
-        if (!(hasUpper && hasLower && hasDigit && hasSpecial)) {
-            throw new ValidationException(
-                "Password must contain Uppercase, Lowercase, Digit and Special character");
-        }
+        if (!hasUpper)
+            throw new ValidationException("Password must contain at least one uppercase letter");
+
+        if (!hasLower)
+            throw new ValidationException("Password must contain at least one lowercase letter");
+
+        if (!hasDigit)
+            throw new ValidationException("Password must contain at least one digit");
+
+        if (!hasSpecial)
+            throw new ValidationException("Password must contain at least one special character");
     }
 
     // 3. Phone Validation (10 Digits)
